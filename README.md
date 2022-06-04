@@ -135,7 +135,7 @@ A variable in C# can be made into a compile-time constant by adding the const ke
 ### Access Modifiers
 
 | Caller's location  | public | protected internal | protected | internal | private protected | private |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| ------------- | :---:  | :---:  |  :---:  | :---:  |  :---:  | :---:  |
 | Within the class |✔️ |  ✔️ | ✔️ | ✔️ | ✔️ | ✔️ | 
 | Derived class (same assembly) | ✔️ |  ✔️ | ✔️ | ✔️ | ✔️ | ❌ |
 | Non-derived class (same assembly) | ✔️  | ✔️  | ❌ |✔️  |  ❌ | ❌ |
