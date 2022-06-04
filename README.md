@@ -31,7 +31,7 @@ A set of libraries that comprise the System.*
 
 #### Framework Class Library (FCL) 
 
-FCL is the wider library that contains the totality: ASP.NET, WinForms, the XML stack, ADO.NET and more. You could say that the FCL includes the BCL.
+FCL is the wider library that contains the totality: ASPNET, WinForms, the XML stack, ADONET and more. You could say that the FCL includes the BCL.
 
 #### CoreFX
 
@@ -98,13 +98,15 @@ A Task is a higher level concept than Thread. We can easily implement Asynchrono
 
 The garbage collector is an implementation of automatic memory management. The GC frees memory occupied by objects that are no longer in use.
 
+https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/
+
 #### Metapackages
 
 The framework .NET Core 2.0 introduced Metapackage that includes all the supported packages code with their dependencies into one package. It helps us to do fast development as we don’t require to include the individual packages. Example: Microsoft.AspNetCore.All.
 
 #### Middleware
 
-##### ASP.NET Core Middleware vs ASP.NET Core Filters?
+##### ASPNET Core Middleware vs ASPNET Core Filters?
 
 ##### What is the difference between IApplicationBuilder.Use() and IApplicationBuilder.Run()
 
@@ -112,9 +114,9 @@ The framework .NET Core 2.0 introduced Metapackage that includes all the support
 
 ##### What is the Run extension?
 
-##### How to enable Session in ASP.NET Core?
+##### How to enable Session in ASPNET Core?
 
-#### ASP.NET Core Dependency Injection
+#### ASPNET Core Dependency Injection
 
 #### Singleton
 
@@ -122,15 +124,12 @@ The framework .NET Core 2.0 introduced Metapackage that includes all the support
 
 #### Scoped
 
+### Managed and Unmanaged Code
+
+https://docs.microsoft.com/en-us/dotnet/standard/managed-code
 _____________________________
 
 ### Object-Oriented Programming (OOP) in C#
-
-### Modifiers
-
-#### Constants
-
-A variable in C# can be made into a compile-time constant by adding the const keyword before the data type. This modifier means that the variable cannot be changed and it must therefore be assigned a value at the same time as it is declared. Any attempts to assign a new value to the constant will result in a compile-time error.
 
 ### Access Modifiers
 
@@ -141,6 +140,64 @@ A variable in C# can be made into a compile-time constant by adding the const ke
 | Non-derived class (same assembly) | ✔️  | ✔️  | ❌ |✔️  |  ❌ | ❌ |
 | Derived class (different assembly) | ✔️ |  ✔️  | ✔️  |  ❌ | ❌ | ❌ |
 | Non-derived class (different assembly) | ✔️  | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+### Continue and break in loop
+
+### Constant vs readonly
+
+A variable in C# can be made into a compile-time constant by adding the const keyword before the data type. This modifier means that the variable cannot be changed and it must therefore be assigned a value at the same time as it is declared. Any attempts to assign a new value to the constant will result in a compile-time error.
+
+https://www.c-sharpcorner.com/UploadFile/puranindia/C-Sharp-interview-questions/
+
+### Ref vs out
+
+### Sealed 
+
+### Late binding and early binding
+
+### IEnumerable vs IQueryable
+
+### IEnumerable<>
+
+### Yield
+
+### Equality Operator (==) vs Equals()
+
+### Is vs As
+
+### Anonymous Types
+
+### Reflection 
+
+### LINQ 
+
+### Using statement
+
+https://www.c-sharpcorner.com/UploadFile/manas1/usage-and-importance-of-using-in-C-Sharp472/
+
+### Operators and expressions (.? ?? :: )
+
+https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/
+
+### Serialization
+
+### Lock and DeadLock
+
+https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock
+
+### Value types vd Reference type
+
+### What happens if the inherited interfaces have conflicting method names?
+
+### Can “this” be used within a static method?
+
+### Array.CopyTo() vs Array.Clone()
+
+### Array vs ArrayList
+
+### Dispose vs finalize 
+
+### Delegates and multicast delegate
 
 ### Interfaces
 
@@ -155,3 +212,61 @@ An abstract class provides a partial implementation that other classes can build
 ### Inheritance
 
 ### Composition vs Inheritance
+
+### Struct vs Class
+
+### Encapsulation
+
+### Polymorphism
+
+### Overloading
+
+### Overriding
+
+### Overloading vs Overriding
+
+### Virtual
+
+### Static methods vs Static class
+
+### Data Abstraction
+
+### Try catch finally and exception
+
+### Boxing vs unboxing 
+
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/types/boxing-and-unboxing
+
+https://docs.microsoft.com/en-us/dotnet/framework/performance/performance-tips
+
+### Collections and Data Structures
+
+https://docs.microsoft.com/en-us/dotnet/standard/collections/
+
+https://docs.microsoft.com/en-us/dotnet/standard/collections/commonly-used-collection-types
+
+### Concurrent Collections
+
+https://docs.microsoft.com/en-us/dotnet/standard/collections/thread-safe/
+
+### Memory and span
+
+https://docs.microsoft.com/en-us/dotnet/standard/memory-and-spans/
+
+### SOLID
+
+#### Single Responsiblity Principle
+
+#### Open-Closed Principle
+
+#### Liskov Substitution Principle
+
+#### Interface Segregation Principle
+
+#### Dependency Inversion Principle
+
+
+
+## Reference:
+
+https://docs.microsoft.com/en-us/dotnet/csharp/
