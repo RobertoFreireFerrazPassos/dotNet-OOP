@@ -47,6 +47,10 @@ JIT translates CIL to machine code that the processor understands.
 
 #### .NET Framework, .NET Core and .NET Standard
 
+<p align="center">
+  <img src="https://github.com/RobertoFreireFerrazPassos/dotNet-OOP/blob/main/images/dotNET_Core_dotNET_CLI_Compilation.png?raw=true">
+</p>
+
 ##### .NET Framework
 
 * It can run applications on Windows platform only.
@@ -54,6 +58,10 @@ JIT translates CIL to machine code that the processor understands.
 * It supports ASPNET Web Forms, WinForms, WCF, Silverlight, etc. 
 * The building blocks of .NET Framework are Common Language Runtime (CLR) and Base Class Libraries (BCL) and Common Intermediate Language (CIL).
 * The Code written in C#, F# or VB is converted by the compiler into CIL. The code is executed by CLR using JIT to machine-specific code.
+
+<p align="center">
+  <img src="https://github.com/RobertoFreireFerrazPassos/dotNet-OOP/blob/main/images/CLR_CIL_JIT.jpg?raw=true">
+</p>
 
 ##### .NET Core
 
@@ -65,6 +73,10 @@ JIT translates CIL to machine code that the processor understands.
 
 * NET Standard is a specification that can be used across all .NET implementations. 
 * It is used for developing library projects only. This means if we are creating a library in .NET Standard we can use those in .NET Framework and .NET Core.
+
+<p align="center">
+  <img src="https://github.com/RobertoFreireFerrazPassos/dotNet-OOP/blob/main/images/NET_Core_NET%20Framework.png?raw=true">
+</p>
 
 #### Features provided by ASPNET Core
 
@@ -94,6 +106,10 @@ A Task is a higher level concept than Thread. We can easily implement Asynchrono
 * Task supports cancellation through the use of cancellation tokens. But Thread doesn't.
 * A task can have multiple things happening at the same time. Threads can only have one thing running at a time.
 
+<p align="center">
+  <img src="https://github.com/RobertoFreireFerrazPassos/dotNet-OOP/blob/main/images/thread_task.png?raw=true">
+</p>
+
 #### Garbage collector.
 
 The garbage collector is an implementation of automatic memory management. The GC frees memory occupied by objects that are no longer in use.
@@ -103,6 +119,10 @@ https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/
 #### Metapackages
 
 The framework .NET Core 2.0 introduced Metapackage that includes all the supported packages code with their dependencies into one package. It helps us to do fast development as we don’t require to include the individual packages. Example: Microsoft.AspNetCore.All.
+
+<p align="center">
+  <img src="https://github.com/RobertoFreireFerrazPassos/dotNet-OOP/blob/main/images/Metapackages.png?raw=true">
+</p>
 
 #### Middleware
 
