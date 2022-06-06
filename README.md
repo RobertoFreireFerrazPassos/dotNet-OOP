@@ -219,19 +219,156 @@ https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/loc
 
 ### Delegates and multicast delegate
 
-### Interfaces
+### Abstract Class vs Interfaces
 
-### Abstract Class
+#### Interfaces
+
+Interface defines a contract between an object and its user. It can be implemented by a class or a struct that adheres to the contract.
+
+**Cannot** create an instance of interface
+```cs
+public interface IA {}
+... 
+var classB = new IA(); // Compiler Error
+```
+
+An interface can contain methods and properties but **not fields**.
+```cs
+public interface Ib 
+{
+  public string Field1; // Compiler Error
+
+  public string Property1 { get; set; }  
+
+  // It is possible to create property like below.
+  // But, it will not acessable by the class which implements this interface.
+  public string Property2 {
+      get
+      {
+          return "text";
+      }
+      set
+      {
+          Console.WriteLine(value);
+      }
+  }
+}
+...
+public class ClassB : Ib
+{
+    public string Property1 { get => "test ClassB"; set => Console.WriteLine(value); }
+}
+```
+
+Class can implement multiple interfaces 
+
+```cs
+public interface IA {
+    public void Function1();
+}
+
+public interface IB {
+    public void Function2();
+}
+
+public class C : IA, IB
+{
+    public void Function1() { }
+
+    public void Function2() { }
+}
+```
+
+#### Abstract Class
 
 An abstract class provides a partial implementation that other classes can build on. When a class is declared as abstract, it means that the class can contain incomplete members that must be implemented in derived classes, in addition to normal class members.
 
-### Abstract Class vc Interfaces
 
-### Composition
+A method/property **cannot** be an abstract member of a nonabstract class.
+```cs
+public class ClassA 
+{
+    public abstract string Property1 { get; set; } // Compiler Error
 
-### Inheritance
+    public abstract void Function1(); // Compiler Error
+}
+```
+
+The modifier 'abstract' is not valid on fields. Try using a property instead
+```cs
+public abstract class ClassA 
+{
+    public abstract string Property1; // Compiler Error
+}
+```
+
+**Cannot** create an instance of the abstract class
+```cs
+public abstract class ClassA {}
+... 
+var classA = new ClassA(); // Compiler Error
+```
+
+Class **cannot** inherit multiple classes/abstract classes. 
+```cs
+public class A {}
+
+public abstract class B {}
+
+public class D : A, B // error 
+{}
+```
+
+Implementation of an abstract class
+```cs
+public abstract class ClassA 
+{
+    public abstract string Property1 { get; set; }
+    
+    public abstract void Function1(); 
+
+    public string Function2()
+    {
+        return "test2";
+    }
+}
+...
+public class ClassB : ClassA
+{
+    private string property;
+
+    public override string Property1 { get => property; set => property = value; }
+
+    public override void Function1()
+    {
+        property = property + " add value";
+    }
+}
+...
+var b = new ClassB();
+b.Property1 = "test value";
+b.Function1();
+Console.WriteLine(b.Property1);
+Console.WriteLine(b.Function2());
+
+// Console Output
+// test value add value
+// test2
+```
 
 ### Composition vs Inheritance
+
+#### Composition
+
+#### Inheritance
+
+### Overloading vs Overriding
+
+#### Overloading
+
+#### Overriding
+
+### Static methods vs Static class
 
 ### Struct vs Class
 
@@ -239,15 +376,7 @@ An abstract class provides a partial implementation that other classes can build
 
 ### Polymorphism
 
-### Overloading
-
-### Overriding
-
-### Overloading vs Overriding
-
 ### Virtual
-
-### Static methods vs Static class
 
 ### Data Abstraction
 
