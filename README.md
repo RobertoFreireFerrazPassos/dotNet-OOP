@@ -280,10 +280,8 @@ public class ClassB
     {
         field1 = "test";
     }
-}
-```
+} 
 
-```cs
 public static class ClassB
 {
     public static string field1 ="test";
