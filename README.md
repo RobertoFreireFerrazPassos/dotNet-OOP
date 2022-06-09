@@ -4,18 +4,20 @@ _____________________________
 
 ### DotNet
 
-#### Internet Information Services (IIS)
+#### Web servers 
+
+##### Internet Information Services (IIS)
 
 Internet Information Services (IIS) for Windows Server is a flexible, secure and manageable Web server for hosting anything on the Web
 
-#### Kestrel
+##### Kestrel
 
 Kestrel is a cross-platform web server built for ASPNET Core based on libuv – a cross-platform asynchronous I/O library.
 It is secure and good enough to use it without a reverse proxy server (IIS, Nginx or Apache)
 
-#### WebListener
+##### WebListener
 
-ASPNET Core ships two server implementations Kestrel and WebListener. WebListener is also a web server for ASPNET Core that runs only on Windows. It’s built on the Http.Sys kernel mode driver. WebListener is an alternative to Kestrel that can be used for direct connection to the Internet without relying on IIS as a reverse proxy server.
+WebListener is also a web server for ASPNET Core that runs only on Windows. It’s built on the Http.Sys kernel mode driver. WebListener is an alternative to Kestrel that can be used for direct connection to the Internet without relying on IIS as a reverse proxy server.
 
 #### Common Language Runtime (CLR)
 
@@ -69,6 +71,10 @@ JIT translates CIL to machine code that the processor understands.
 * It supports modern application frameworks such as gRPC, ASPNET Core Razor Pages, Blazor (for WebAssembly), UWP and etc.
 * The building blocks of .NET Core are Core CLR and CoreFX. 
 
+<p align="center">
+  <img src="https://github.com/RobertoFreireFerrazPassos/dotNet-OOP/blob/main/images/dotnet_core_code_execution.jpg?raw=true">
+</p>
+
 ##### .NET Standard
 
 * NET Standard is a specification that can be used across all .NET implementations. 
@@ -99,6 +105,8 @@ A process is an executing application.
 #### Thread
 
 A Thread is a small set of executable instructions. The operating system executes code within a thread. The operating system switches between threads, allowing each to execute in turn, thus giving the impression that multiple applications are running at the same time.
+
+A single thread in a C# application, is an independent execution path that can run simultaneously with the main application thread. A C# client program (Console, WPF, or Windows Forms) starts in a single thread created automatically by the CLR and operating system (the "main" thread), and is made multithreaded by creating additional threads.
 
 #### Task
 
@@ -280,7 +288,7 @@ public class ClassB
     {
         field1 = "test";
     }
-} 
+}
 
 public static class ClassB
 {
