@@ -315,6 +315,25 @@ public class ClassC : ClassB // Compiler Error: A sealed class cannot act as a b
 }
 ```
 
+Sealed methods are used to prevent override
+```cs
+public class ClassA
+{
+    // cannot use sealed in base class
+    public virtual void Method1(){}
+}
+
+public class ClassB : ClassA
+{
+    public sealed override void Method1(){}
+}
+
+public class ClassC : ClassB
+{
+    public override void Method1(){} // Compiler Error: A member cannot override a sealed inherited member.
+}
+```
+
 #### Value types
 
 bool, byte,char,decimal, double, float, int, long, short, struct, enum, tuples,...
