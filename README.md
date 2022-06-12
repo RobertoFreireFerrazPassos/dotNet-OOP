@@ -596,7 +596,9 @@ public class ClassD : ClassB
 
 **Inheritance** creates structure while **composition** creates flexibility. The derived class and base class are tightly coupled while in composition, class and its properties/fields can be loosely coupled.
 
-**Inheritance** is static binding (compile time binding) while **composition** is dynamic binding (run time binding). In **inheritance**, there is an image of the base class in the derived class object, so the image of the base class is created when the derived class object is created. **Composition** allows late creation of the properties/fields until and unless they are not really required.
+**Inheritance** is static binding (compile time binding). In **inheritance**, there is an image of the base class in the derived class object, so the image of the base class is created when the derived class object is created. 
+
+**Composition** is dynamic binding (run time binding). **Composition** allows late creation of the properties/fields until and unless they are not really required.
 
 #### Overloading vs Overriding
 
