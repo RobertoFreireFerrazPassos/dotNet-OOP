@@ -659,7 +659,93 @@ https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/
 
 #### Serialization
 
-#### Lock and DeadLock
+#### Lock and synchronization 
+
+**Synchronization**
+
+Synchronization is a technique that allows only one thread to access the resource for the particular time. No other thread can interrupt until the assigned thread finishes its task.
+
+**Lock**
+
+We can use C# lock keyword to execute program synchronously. It is used to get lock for the current thread, execute the task and then release the lock. It ensures that other thread does not interrupt the execution until the execution finish.
+
+In this example, we are using lock. This example executes synchronously. In other words, there is no context-switching between the threads. In the output section, we can see that second thread starts working after first threads finishes its tasks.
+
+```cs
+using System;  
+using System.Threading;  
+class Printer  
+{  
+    public void PrintTable()  
+    {  
+        lock (this)  
+        {  
+            for (int i = 1; i <= 10; i++)  
+            {  
+                Thread.Sleep(100);  
+                Console.WriteLine(i);  
+            }  
+        }  
+    }  
+}  
+class Program  
+{  
+    public static void Main(string[] args)  
+    {  
+        Printer p = new Printer();  
+        Thread t1 = new Thread(new ThreadStart(p.PrintTable));  
+        Thread t2 = new Thread(new ThreadStart(p.PrintTable));  
+        t1.Start();  
+        t2.Start();  
+    }  
+}  
+
+// Result using lock:
+//1
+//2
+//3
+//4
+//5
+//6
+//7
+//8
+//9
+//10
+//1
+//2
+//3
+//4
+//5
+//6
+//7
+//8
+//9
+//10
+
+
+// Result NOT using lock:
+//1
+//1
+//2
+//2
+//3
+//3
+//4
+//4
+//5
+//5
+//6
+//6
+//7
+//7
+//8
+//8
+//9
+//9
+//10
+//10
+```
+
 
 https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock
 
@@ -696,6 +782,7 @@ public static class IntExtensions
 #### Boxing vs unboxing 
 
 Boxing and Unboxing both are used for type conversions.
+
 **NOTE**: Boxing and unboxing are computationally expensive processes.
 
 The process of converting from a value type to a reference type is called boxing. Boxing is an implicit conversion. Here is an example of boxing in C#.
@@ -718,24 +805,331 @@ Console.WriteLine(anum2);
 Console.WriteLine(obj);  
 ```
 
-https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/types/boxing-and-unboxing
-
-https://docs.microsoft.com/en-us/dotnet/framework/performance/performance-tips
-
 #### Upcasting vs  Downcasting
 
 Upcasting is an operation that creates a base class reference from a subclass reference. ( subclass -> superclass) (i.e. Manager -> Employee)
 Downcasting is an operation that creates a subclass reference from a base class reference. ( superclass -> subclass) (i.e. Employee -> Manager)
 
-#### Collections and Data Structures
+#### Array
 
-https://docs.microsoft.com/en-us/dotnet/standard/collections/
+- Arrays are most useful for creating and working with a fixed number of strongly typed objects.
 
-https://docs.microsoft.com/en-us/dotnet/standard/collections/commonly-used-collection-types
+```cs
+// Declare a single-dimensional array of 5 integers.
+int[] array1 = new int[5];
 
-#### Concurrent Collections
+// Declare and set array element values.
+int[] array2 = new int[] { 1, 3, 5, 7, 9 };
 
-https://docs.microsoft.com/en-us/dotnet/standard/collections/thread-safe/
+// Alternative syntax.
+int[] array3 = { 1, 2, 3, 4, 5 };
+int lengthOfarray3 = array3.Length;
+
+// Declare a two dimensional array.
+int[,] multiDimensionalArray1 = new int[2, 3];
+```
+
+#### Collections
+
+- The group of objects you work with can grow and shrink dynamically
+
+##### Generic collections
+
+- Generic collections are faster over non-generic collections. The process of data retrieval is slower, as it has to do boxing/unboxing. 
+- Also, they are type-safe and have lesser runtime exceptions. This is because most of the exceptions can be found and handled during the compile time. 
+
+**List**
+
+```cs
+var salmons = new List<string>();
+// var salmons = new List<string> { "chinook", "coho", "pink" };
+salmons.Add("chinook");
+salmons.Add("coho");
+salmons.Add("pink");
+
+foreach (var salmon in salmons)
+{
+    Console.Write(salmon + " ");
+}
+// Output: chinook coho pink
+```
+
+**Dictionary**
+
+- It can hold multiple elements with a key and its respective value.
+- It doesn't allow duplication of the keys that are getting stored. 
+
+```cs
+var exampleDictionary = new Dictionary<string,string>();
+exampleDictionary.Add("Key1","Value1");
+```
+
+**HashSet**
+
+- It is specifically used in scenarios where duplicates need to be avoided. 
+- HashSet does not store the elements in any particular order.
+
+```cs
+HashSet<int> evenNumbers = new HashSet<int>();
+HashSet<int> oddNumbers = new HashSet<int>();
+
+for (int i = 0; i < 5; i++)
+{
+    // Populate numbers with just even numbers.
+    evenNumbers.Add(i * 2);
+
+    // Populate oddNumbers with just odd numbers.
+    oddNumbers.Add((i * 2) + 1);
+}
+
+Console.Write("evenNumbers contains {0} elements: ", evenNumbers.Count);
+DisplaySet(evenNumbers);
+
+Console.Write("oddNumbers contains {0} elements: ", oddNumbers.Count);
+DisplaySet(oddNumbers);
+
+// Create a new HashSet populated with even numbers.
+HashSet<int> numbers = new HashSet<int>(evenNumbers);
+Console.WriteLine("numbers UnionWith oddNumbers...");
+numbers.UnionWith(oddNumbers);
+
+Console.Write("numbers contains {0} elements: ", numbers.Count);
+DisplaySet(numbers);
+
+void DisplaySet(HashSet<int> collection)
+{
+    Console.Write("{");
+    foreach (int i in collection)
+    {
+        Console.Write(" {0}", i);
+    }
+    Console.WriteLine(" }");
+}
+
+/* This example produces output similar to the following:
+* evenNumbers contains 5 elements: { 0 2 4 6 8 }
+* oddNumbers contains 5 elements: { 1 3 5 7 9 }
+* numbers UnionWith oddNumbers...
+* numbers contains 10 elements: { 0 2 4 6 8 1 3 5 7 9 }
+*/
+```
+
+##### Non-Generic collections
+
+- It can handle any type of object and it is not type-safe. 
+- Also, users will be able to add different data types of elements in a non-generic collection.
+
+**ArrayList**
+
+```cs
+var exampleArraylist = new ArrayList();
+exampleArraylist.Add(1);
+exampleArraylist.Add(true);
+```
+
+**Hashtable**
+
+- It can store data in the form of a key-value pair.
+
+```cs
+// Create a new hash table.
+//
+Hashtable openWith = new Hashtable();
+
+// Add some elements to the hash table. There are no
+// duplicate keys, but some of the values are duplicates.
+openWith.Add("txt", "notepad.exe");
+openWith.Add("bmp", "paint.exe");
+openWith.Add("dib", "paint.exe");
+openWith.Add("rtf", "wordpad.exe");
+
+// The Add method throws an exception if the new key is already in the hash table.
+try
+{
+    openWith.Add("txt", "winword.exe");
+}
+catch
+{
+    Console.WriteLine("An element with Key = \"txt\" already exists.");
+}
+```
+
+**Stack**
+
+- Represents a simple last-in-first-out (LIFO)
+
+```cs
+using System;
+using System.Collections;
+public class SamplesStack  {
+
+   public static void Main()  {
+
+      // Creates and initializes a new Stack.
+      Stack myStack = new Stack();
+      myStack.Push("Hello");
+      myStack.Push("World");
+      myStack.Push("!");
+
+      // Displays the properties and values of the Stack.
+      Console.WriteLine( "myStack" );
+      Console.WriteLine( "\tCount:    {0}", myStack.Count );
+      Console.Write( "\tValues:" );
+      PrintValues( myStack );
+   }
+
+   public static void PrintValues( IEnumerable myCollection )  {
+      foreach ( Object obj in myCollection )
+         Console.Write( "    {0}", obj );
+      Console.WriteLine();
+   }
+}
+
+/*
+This code produces the following output.
+
+myStack
+    Count:    3
+    Values:    !    World    Hello
+*/
+```
+
+**Queue**
+
+- Represents a first-in, first-out
+
+```cs
+ using System;
+ using System.Collections;
+ public class SamplesQueue  {
+
+    public static void Main()  {
+
+       // Creates and initializes a new Queue.
+       Queue myQ = new Queue();
+       myQ.Enqueue("Hello");
+       myQ.Enqueue("World");
+       myQ.Enqueue("!");
+
+       // Displays the properties and values of the Queue.
+       Console.WriteLine( "myQ" );
+       Console.WriteLine( "\tCount:    {0}", myQ.Count );
+       Console.Write( "\tValues:" );
+       PrintValues( myQ );
+    }
+
+    public static void PrintValues( IEnumerable myCollection )  {
+       foreach ( Object obj in myCollection )
+          Console.Write( "    {0}", obj );
+       Console.WriteLine();
+    }
+ }
+ /*
+ This code produces the following output.
+
+ myQ
+     Count:    3
+     Values:    Hello    World    !
+*/
+```
+
+##### Concurrent Collections
+
+- Provides several thread-safe collection whenever multiple threads are accessing the collection concurrently. However, access to elements of a collection object through extension methods or through explicit interface implementations are not guaranteed to be thread-safe and may need to be synchronized by the caller.
+
+-  Multiple threads can safely and efficiently add or remove items from these collections, without requiring additional synchronization in user code.
+
+**ConcurrentQueue<T>**
+
+- Represents a thread-safe first in-first out (FIFO) collection
+
+```cs
+using System;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
+
+class CQ_EnqueueDequeuePeek
+{
+   // Demonstrates:
+   // ConcurrentQueue<T>.Enqueue()
+   // ConcurrentQueue<T>.TryPeek()
+   // ConcurrentQueue<T>.TryDequeue()
+   static void Main ()
+   {
+      // Construct a ConcurrentQueue.
+      ConcurrentQueue<int> cq = new ConcurrentQueue<int>();
+
+      // Populate the queue.
+      for (int i = 0; i < 10000; i++)
+      {
+          cq.Enqueue(i);
+      }
+
+      // Peek at the first element.
+      int result;
+      if (!cq.TryPeek(out result))
+      {
+         Console.WriteLine("CQ: TryPeek failed when it should have succeeded");
+      }
+      else if (result != 0)
+      {
+         Console.WriteLine("CQ: Expected TryPeek result of 0, got {0}", result);
+      }
+
+      int outerSum = 0;
+      // An action to consume the ConcurrentQueue.
+      Action action = () =>
+      {
+         int localSum = 0;
+         int localValue;
+         while (cq.TryDequeue(out localValue)) localSum += localValue;
+         Interlocked.Add(ref outerSum, localSum);
+      };
+
+      // Start 4 concurrent consuming actions.
+      Parallel.Invoke(action, action, action, action);
+
+      Console.WriteLine("outerSum = {0}, should be 49995000", outerSum);
+   }
+}
+```
+
+**ConcurrentDictionary<TKey,TValue>**
+
+- Represents a thread-safe collection of key/value pairs that can be accessed by multiple threads concurrently.
+
+```cs
+class CD_Ctor
+{
+        // Demonstrates:
+        //      ConcurrentDictionary<TKey, TValue> ctor(concurrencyLevel, initialCapacity)
+        //      ConcurrentDictionary<TKey, TValue>[TKey]
+        static void Main()
+        {
+            // We know how many items we want to insert into the ConcurrentDictionary.
+            // So set the initial capacity to some prime number above that, to ensure that
+            // the ConcurrentDictionary does not need to be resized while initializing it.
+            int NUMITEMS = 64;
+            int initialCapacity = 101;
+
+            // The higher the concurrencyLevel, the higher the theoretical number of operations
+            // that could be performed concurrently on the ConcurrentDictionary.  However, global
+            // operations like resizing the dictionary take longer as the concurrencyLevel rises.
+            // For the purposes of this example, we'll compromise at numCores * 2.
+            int numProcs = Environment.ProcessorCount;
+            int concurrencyLevel = numProcs * 2;
+
+            // Construct the dictionary with the desired concurrencyLevel and initialCapacity
+            ConcurrentDictionary<int, int> cd = new ConcurrentDictionary<int, int>(concurrencyLevel, initialCapacity);
+
+            // Initialize the dictionary
+            for (int i = 0; i < NUMITEMS; i++) cd[i] = i * i;
+
+            Console.WriteLine("The square of 23 is {0} (should be {1})", cd[23], 23 * 23);
+        }
+}
+```
 
 #### Memory and span
 
@@ -861,3 +1255,17 @@ https://docs.microsoft.com/en-us/dotnet/framework/performance/performance-tips
 https://docs.microsoft.com/en-us/dotnet/csharp/
 
 https://www.c-sharpcorner.com/UploadFile/puranindia/C-Sharp-interview-questions/
+
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/types/boxing-and-unboxing
+
+https://docs.microsoft.com/en-us/dotnet/framework/performance/performance-tips
+
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/arrays/
+
+https://www.partech.nl/nl/publicaties/2020/11/collections-in-c-sharp---everything-you-need-to-know#
+
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/collections
+
+https://docs.microsoft.com/en-us/dotnet/standard/collections/commonly-used-collection-types
+
+https://docs.microsoft.com/en-us/dotnet/standard/collections/thread-safe/
