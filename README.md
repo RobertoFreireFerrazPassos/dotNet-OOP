@@ -747,8 +747,6 @@ class Program
 ```
 
 
-https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock
-
 #### What happens if the inherited interfaces have conflicting method names?
 
 #### Can “this” be used within a static method?
@@ -835,8 +833,8 @@ int[,] multiDimensionalArray1 = new int[2, 3];
 
 ##### Generic collections
 
-- Generic collections are faster over non-generic collections. The process of data retrieval is slower, as it has to do boxing/unboxing. 
-- Also, they are type-safe and have lesser runtime exceptions. This is because most of the exceptions can be found and handled during the compile time. 
+- Generic collections are faster over non-generic collections. It has to do boxing/unboxing. 
+- Generic collections are type-safe (lesser runtime exceptions). This is because most of the exceptions can be found and handled during the compile time. 
 
 **List**
 
@@ -1275,3 +1273,5 @@ https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/collec
 https://docs.microsoft.com/en-us/dotnet/standard/collections/commonly-used-collection-types
 
 https://docs.microsoft.com/en-us/dotnet/standard/collections/thread-safe/
+
+https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock
