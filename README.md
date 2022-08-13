@@ -402,7 +402,7 @@ public interface Ib
   public string Property1 { get; set; }  
 
   // It is possible to create property like below.
-  // But, it will not acessable by the class which implements this interface.
+  // But, it will not be acessable by the class which implements this interface.
   public string Property2 {
       get
       {
@@ -1137,11 +1137,17 @@ https://docs.microsoft.com/en-us/dotnet/standard/memory-and-spans/
 
 #### SOLID
 
-##### Single Responsiblity Principle
+- Single Responsiblity Principle
+- Open-Closed Principle
+- Liskov Substitution Principle
+- Interface Segregation Principle
+- Dependency Inversion Principle
+
+##### 1 - Single Responsiblity Principle
 
 Each software module, class or method should have only one reason to change. That does not mean your class should contain only one method or property, you can have multiple members (methods or properties) as long as they are related to a single responsibility or functionality.
 
-##### Open-Closed Principle
+##### 2 - Open-Closed Principle
 
 Software entities (classes or methods) should be open for extension but closed for modification.
 
@@ -1184,15 +1190,15 @@ public class BikeWithOCP
 }
 ```
 
-##### Liskov Substitution Principle
+##### 3 - Liskov Substitution Principle
 
 Objects of a superclass should be replaceable with objects of its subclasses without breaking the application. In other words, what we want is to have the objects of our subclasses behaving the same way as the objects of our superclass.
 
-##### Interface Segregation Principle
+##### 4 - Interface Segregation Principle
 
 No code should be forced to depend on methods it does not use. Prefer more interfaces and more specific than fewer and more generic interfaces.
 
-##### Dependency Inversion Principle
+##### 5 - Dependency Inversion Principle
 
 Depend upon abstractions. Do not depend upon concrete classes. high-level components should not depend on our low-level components. Instead, they should both depend on abstractions.
 
