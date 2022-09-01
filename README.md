@@ -274,32 +274,48 @@ public class ClassB
 
 ##### Static
 
+Static members
 ```cs
 public class ClassB
 {
-    public static readonly string field1 ="test";
+    public static string field1 = "test1";
 
-    ClassB()
+    public string field2 = "test2";
+
+    public ClassB()
     {
-        field1 = "test"; // Compiler Error: Fields of static readonly field 'name' cannot be assigned to (except in a static constructor or a variable initializer
+        field1 = "test3";
+        field2 = "test4";
     }
 
-    static ClassB()
+    public static void function1()
     {
-        field1 = "test";
+        field1 = "test5";
+        //field2 = "test6"; // An object reference is required for the nonstatic field, method, or property 'member'
     }
 }
 
+var b = new ClassB();
+
+Console.WriteLine(ClassB.field1);
+Console.WriteLine(b.field2);
+
+// output
+// test3
+// test4
+```
+
+Static class, all members must be static
+```cs
 public static class ClassB
 {
     public static string field1 ="test";
 
-    public string field2 ="test"; // Compiler Error: The static keyword should be applied to all members of static classes.
+    public string field2 ="test"; // Compiler Error: Cannot declare instance members in a static class. The static keyword should be applied to all members of static classes.
 
     ClassB() {} // Compiler Error: A static class cannot be instantiated, hence it has no need for constructors.
 
-    public void Method(){ // Compiler Error: The static keyword should be applied to all members of static classes.
-    }
+    public void Method(){ } // Compiler Error: The static keyword should be applied to all members of static classes.
 }
 ```
 
@@ -463,11 +479,52 @@ public abstract class ClassA
 }
 ```
 
-**Cannot** create an instance of the abstract class
+- **Cannot** create a directly instance of an abstract class
+- But, an abstract class is instantiated by creating a concrete class that is derived from it.
+- So, when create a instance of a subclass of an abstract class, it also creates a instance of the abstract class.
+- Because an abstract class can be instantiated, it must have a constructor.
+- Even if we don’t provide any constructor, the compiler will add default constructor in an abstract class.
+
 ```cs
-public abstract class ClassA {}
-... 
-var classA = new ClassA(); // Compiler Error
+
+public abstract class ClassB
+{
+    public ClassB()
+    {
+        Property2 = "Value 1";
+        Property1 = Property2 + Function2();
+    }
+
+    public abstract string Property1 { get; set; }
+
+    public string Property2 { get; set; }
+
+    public abstract string Function1();
+
+    public string Function2()
+    {
+        return "test4";
+    }        
+}
+
+public class ClassA : ClassB
+{
+    public override string Property1 { get; set; }
+
+    public override string Function1()
+    {
+        return Property1;
+    }
+}
+
+
+//var b = new ClassB(); // Cannot create an instance of the abstract class
+var a = new ClassA();
+
+Console.WriteLine(a.Function1());
+
+// Output
+// Value 1test4
 ```
 
 Class **cannot** inherit multiple classes/abstract classes. 
@@ -519,13 +576,13 @@ Console.WriteLine(b.Function2());
 
 #### Virtual vs Abstract
 
-**Cannot** use virtual to class.
-**Virtual** methods **must** have a body.
-**Virtual** methods can optionally be overridden
+- **Cannot** use virtual to class.
+- **Virtual** methods **must** have a body.
+- **Virtual** methods can optionally be overridden
 
-**Abstract** members must be in a abstract class.
-**Abstract** methods can optionally have a body.
-Classes that inherits a abstract class **must** implement its abstract members (like when a class implements a interface)
+- **Abstract** members must be in a abstract class.
+- **Abstract** methods **can not** have a body.
+- Classes that inherits a abstract class **must** implement its abstract members (like when a class implements a interface)
 
 ```cs
 public class ClassA 
@@ -576,6 +633,7 @@ public class ClassD : ClassB
 
     public override void Function1()
     {
+        //base.Function1(); // Error CS0205: Cannot call an abstract base member: 'method'
         throw new NotImplementedException();
     }
 
