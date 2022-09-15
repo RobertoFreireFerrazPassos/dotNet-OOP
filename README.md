@@ -396,6 +396,20 @@ public struct A {
 }
 ```
 
+#### Use enumeration classes instead of enum types
+
+[TO DO]
+
+https://docs.microsoft.com/pt-pt/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/enumeration-classes-over-enum-types
+
+
+#### Why are strings in C# immutable?
+
+[Draft]
+Immutable means string values cannot be changed once they have been created. Any modification to a string value results in a completely new string instance, thus an inefficient use of memory and extraneous garbage collection. The mutable System.Text.StringBuilder class should be used when string values will change.
+
+https://www.techrepublic.com/article/c-developer-interview-questions-and-answers/
+
 #### Abstract Class vs Interfaces
 
 ##### Interfaces
