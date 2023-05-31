@@ -684,16 +684,24 @@ public class ClassD : ClassB
 
 **Cannot override** inherited member if it is not marked **"virtual"**, **"abstract"** or **"override"**.
 
-#### Encapsulation
+#### The four pillars of Object-Oriented Programming (OOP)
+
+##### Encapsulation: 
 
 Encapsulation is defined as the wrapping up of data under a single unit. It is the mechanism that binds together code and the data it manipulates.
 Encapsulation can be achieved by declaring all the variables in the class as private and using properties in the class to set and get the values of variables.
 
-#### Polymorphism
+##### Inheritance: 
 
-C# allows you to create abstract classes that are used to provide partial class implementation of an interface. Implementation is completed when a derived class inherits from it. Abstract classes contain abstract methods, which are implemented by the derived class.
+Inheritance allows a class to inherit the properties and behavior of another class, called the superclass or base class. The class that inherits from the superclass is called the subclass or derived class. Inheritance promotes code reuse, extensibility, and hierarchical organization of classes.
 
-#### Data Abstraction
+##### Polymorphism: 
+
+Polymorphism means the ability of an object to take on many forms. It allows objects of different classes to be treated as objects of a common superclass. Polymorphism enables flexibility and extensibility in software design, as it allows the same code to be used for objects of different types.
+
+##### Abstraction: 
+
+Abstraction refers to the process of representing complex real-world entities as simplified models in code. It involves focusing on the essential characteristics of an object while hiding unnecessary details. Abstraction helps in managing complexity, enhancing code readability, and providing a clear interface for interacting with objects.
 
 #### Late binding and early binding
 
