@@ -359,6 +359,8 @@ bool, byte,char,decimal, double, float, int, long, short, struct, enum, tuples,.
 **Value types** are allocated either on the stack or the heap depending on where they are created.
 **Reference types** are always allocated on the heap and garbage-collected. 
 
+[TO DO] Explain string as a reference type and that is imuutable and also explain why Stringbuilder
+
 ##### Memory allocation for value types
 
 Value type inside a function has **zero memory heap** allocation. It is allocate in the **stack**.
