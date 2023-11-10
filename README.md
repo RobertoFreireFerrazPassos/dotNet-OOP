@@ -1362,21 +1362,6 @@ https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/loc
 
 # TODO
 
-Create youtube channel to exlain C# concepts in real cenarios
-
-The video should be simple:
-
-- Explain the questions we are trying to explain
-- Explain it
-- Show examples to prove that it works.
-
-## Topics
-
-- Use other videos as references to study the content to use.
-- title should be specific and simple
-- video should go direct to the point.
-
-
 ### try catch
 
 https://youtu.be/LSkbnpjCEkk?si=uUxUGEvLdeciLqnR
