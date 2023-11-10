@@ -1357,3 +1357,47 @@ https://docs.microsoft.com/en-us/dotnet/standard/collections/commonly-used-colle
 https://docs.microsoft.com/en-us/dotnet/standard/collections/thread-safe/
 
 https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock
+
+
+
+# TODO
+
+Create youtube channel to exlain C# concepts in real cenarios
+
+The video should be simple:
+
+- Explain the questions we are trying to explain
+- Explain it
+- Show examples to prove that it works.
+
+## Topics
+
+- Use other videos as references to study the content to use.
+- title should be specific and simple
+- video should go direct to the point.
+
+
+### try catch
+
+https://youtu.be/LSkbnpjCEkk?si=uUxUGEvLdeciLqnR
+
+###  Dispose and IDispose
+
+###  async await in web API
+
+https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-7.0
+
+https://stackoverflow.com/questions/61153553/should-i-always-use-async-await-in-asp-net-core-api-controller
+
+https://stackoverflow.com/questions/59031685/why-we-need-async-task-any-way-default-web-api-request-will-be-running-by-creati
+
+### using for memory deallocation
+
+https://stackoverflow.com/questions/35063768/how-the-using-keyword-improves-performance-memory-or-speed-wise
+
+### httpclient wrong
+
+https://www.aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/
+
+https://andrewlock.net/exporing-the-code-behind-ihttpclientfactory/
+
